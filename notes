@@ -1,0 +1,71 @@
+--> push()
+    --> add item to end of array
+--> querySelector()
+    --> select items in DOM based on element type, class, id
+--> setAttribute()
+    --> sets attribute (param 1) to value (param 2)
+--> getAttribute()
+    --> retrieves value specified attribute
+--> createElement()
+    --> creates element with specified tag
+--> appendChild()
+    --> self-explanatory :)
+--> Math.random()
+    --> random float between 0 and .999...
+--> sort()
+    -->
+--> For loops
+
+
+
+index.html
+--> Basic Boilerplate
+--> h3: displays current score / victory message
+--> span w/ id="result": target in app.js for dynamic text
+--> div class="grid": space designated for board
+
+app.js
+--> all content enclosed in addEventListener('DOMContentLoaded', () => {//all content here//}
+--> const cardArray
+    --> includes name / img
+    --> contained in app.js to facilitate randomization / access
+--> other const
+    --> cardsChosen [] ; store name of clicked image
+    --> cardsChosenID [] ; store ID of clicked image
+    --> cardsWon [] ; store names of successfully matched cards
+--> function createBoard()
+    --> loop over cardArray
+    --> create image element [var card =]
+    --> set image attribute source to blank at outset
+    --> set data-ID as i (facilitates access)
+    --> on click, trigger flipCard
+    --> append card to grid with appendChild
+    --> call function to create board
+--> function flipCard()
+    --> create cardID variable and set it to the ID of the clicked card
+        --> this.getAttribute('data-ID')
+    --> push clicked card's name into cardsChosen array
+    --> push cardID to cardsChosenID
+    --> set source of image to the image associated with the cardID
+    --> once two cards have been clicked, checkForMatch after 500 milliseconds
+        --> setTimeout(function, time)
+--> function checkForMatch() 
+    --> new var / const  
+        --> var cards: collection of cards available
+        --> const optionOneID: ID of first card clicked
+        --> const optionTwoID: ID of second card clicked
+        --> resultDisplay: jQuery select #result
+    --> if card names match 
+        --> set img source to white
+        --> add name of img to cardsWon
+        --> success alert
+    --> if card names do not match
+        --> set img back to blank
+        --> failure alert
+    --> regardless of result
+        --> clear cardsChosen array
+        --> clear cardsChosenID array
+        --> change textContent of resultDisplay to length of cardsWon array
+        --> if length of cardsWon contains all of the names of the pictures in cardArray
+            -->change textContent of resultDisplay to congratulations message
+
